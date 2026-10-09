@@ -1,0 +1,21 @@
+name: Chyba
+description: Niečo nefunguje tak, ako má
+type: Bug
+projects: ["PoUW-ZK/1"]
+body:
+  - type: textarea
+    id: co
+    attributes:
+      label: Čo sa stalo a čo si očakával
+    validations:
+      required: true
+  - type: textarea
+    id: kroky
+    attributes:
+      label: Kroky na zopakovanie
+      render: shell
+  - type: textarea
+    id: logy
+    attributes:
+      label: Logy
+      render: text

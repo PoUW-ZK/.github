@@ -1,0 +1,22 @@
+name: Výskum
+description: Štúdium, experiment, porovnanie alebo rozhodnutie
+type: Research
+projects: ["PoUW-ZK/1"]
+body:
+  - type: textarea
+    id: otazka
+    attributes:
+      label: Čo chceme zistiť
+    validations:
+      required: true
+  - type: textarea
+    id: materialy
+    attributes:
+      label: Materiály
+  - type: textarea
+    id: vystup
+    attributes:
+      label: Výstup
+      description: Poznámky, ADR, tabuľka, prezentácia...
+      value: |
+        - [ ]

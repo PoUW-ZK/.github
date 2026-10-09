@@ -1,0 +1,24 @@
+name: Funkcionalita
+description: Nová funkcionalita systému (user story)
+type: Feature
+projects: ["PoUW-ZK/1"]
+body:
+  - type: textarea
+    id: story
+    attributes:
+      label: User story
+      value: "Ako ... chcem ..., aby ..."
+    validations:
+      required: true
+  - type: textarea
+    id: kriteria
+    attributes:
+      label: Akceptačné kritériá
+      value: |
+        - [ ]
+    validations:
+      required: true
+  - type: textarea
+    id: odkazy
+    attributes:
+      label: Odkazy

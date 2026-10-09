@@ -1,0 +1,54 @@
+name: Security (reusable)
+
+# Shared security checks for all PoUW-ZK repositories.
+# Called from each repository:
+#   jobs:
+#     security:
+#       uses: PoUW-ZK/.github/.github/workflows/security.yml@main
+
+on:
+  workflow_call:
+    inputs:
+      trivy-severity:
+        description: Which severities fail the build
+        type: string
+        default: HIGH,CRITICAL
+
+permissions:
+  contents: read
+
+jobs:
+  secrets:
+    name: Secrets in code (gitleaks)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Gitleaks
+        run: |
+          docker run --rm --user "$(id -u):$(id -g)" -v "$PWD:/repo" \
+            ghcr.io/gitleaks/gitleaks:latest \
+            git --redact --no-banner --verbose /repo
+
+  vulnerabilities:
+    name: Vulnerabilities and misconfiguration (Trivy)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Trivy
+        run: |
+          docker run --rm -v "$PWD:/src" aquasec/trivy:latest \
+            fs --scanners vuln,misconfig \
+            --severity "${{ inputs.trivy-severity }}" \
+            --ignore-unfixed --exit-code 1 --no-progress \
+            /src
+
+  workflows:
+    name: GitHub Actions lint (actionlint)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Actionlint
+        run: |
+          docker run --rm -v "$PWD:/repo" -w /repo rhysd/actionlint:latest -color

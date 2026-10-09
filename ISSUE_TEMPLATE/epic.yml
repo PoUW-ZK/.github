@@ -1,0 +1,25 @@
+name: Epik
+description: Väčší celok práce rozdelený na menšie úlohy
+type: Epic
+projects: ["PoUW-ZK/1"]
+body:
+  - type: textarea
+    id: ciel
+    attributes:
+      label: Cieľ
+    validations:
+      required: true
+  - type: textarea
+    id: preco
+    attributes:
+      label: Prečo
+  - type: textarea
+    id: vystupy
+    attributes:
+      label: Výstupy
+  - type: textarea
+    id: hotovo
+    attributes:
+      label: Hotovo, keď
+      value: |
+        - [ ]

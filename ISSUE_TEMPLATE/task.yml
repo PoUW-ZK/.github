@@ -1,0 +1,23 @@
+name: Úloha
+description: Konkrétna práca bez novej funkcionality (nastavenie, organizácia, refaktoring)
+type: Task
+projects: ["PoUW-ZK/1"]
+body:
+  - type: textarea
+    id: popis
+    attributes:
+      label: Popis
+      description: Čo treba urobiť a prečo.
+    validations:
+      required: true
+  - type: textarea
+    id: kriteria
+    attributes:
+      label: Akceptačné kritériá
+      value: |
+        - [ ]
+  - type: textarea
+    id: odkazy
+    attributes:
+      label: Odkazy
+      description: Súvisiace issues, kapitoly článku, dokumentácia.
